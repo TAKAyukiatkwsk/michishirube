@@ -20,6 +20,8 @@ gem 'mongoid', '~>3.0.0'
 # Test requirements
 gem 'rspec', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
+gem 'factory_girl', '~> 4.0', :group => 'test'
+gem 'database_cleaner', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.0'
