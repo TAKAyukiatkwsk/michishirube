@@ -18,6 +18,12 @@ describe :features do
       post "/features", feature: {name: 'a new feature'}
     end
 
+    it "redirects features index page" do
+      post "/features", feature: {name: 'a new feature'}
+      last_response.should be_redirect
+      last_response.location.should include '/features'
+    end
+
   end
 
 end
