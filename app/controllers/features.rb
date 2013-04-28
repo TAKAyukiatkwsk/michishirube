@@ -23,4 +23,9 @@ Michishirube::App.controllers :features do
     render 'features/index'
   end
 
+  post :create, map: "/features" do
+    feature = Feature.new(name: params[:feature][:name])
+    feature.save
+  end
+
 end
