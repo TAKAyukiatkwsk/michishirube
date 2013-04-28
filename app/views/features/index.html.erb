@@ -5,11 +5,13 @@
   <tr>
     <th>名前</th>
     <th>期限</th>
+    <th></th>
   </tr>
 <% @features.each do |feature| %>
   <tr>
     <td><%= feature.name %></td>
     <td><%= feature.deadline || 'なし' %></td>
+    <td><%= link_to '編集', url_for(:features, :edit, id: feature.id) %></td>
   </tr>
 <% end %>
 </table>

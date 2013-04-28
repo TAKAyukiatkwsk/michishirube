@@ -1,0 +1,10 @@
+<h1>編集</h1>
+<% form_for @feature, "/features/#{@feature.id}" do |f| %>
+  <%= f.text_field_block :name, caption: '名前' %>
+  <%= f.label :year, caption: '期限' %>
+  <%= f.select :year, options: ['2013', '2014'] %>
+  <%= f.select :month, options: ['1', '2'] %>
+  <%= f.select :day, options: ['1', '2'] %>
+  <%= f.submit_block '修正！' %>
+<% end %>
+

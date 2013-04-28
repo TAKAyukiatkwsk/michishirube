@@ -39,4 +39,18 @@ Michishirube::App.controllers :features do
     end
   end
 
+  get :edit, map: "features/:id" do
+    @feature = Feature.find(params[:id])
+    render 'features/edit'
+  end
+
+  post :update, map: "features/:id" do
+    feature = Feature.find(params[:id])
+    feature.name = params[:feature][:name]
+    feature.deadline = Date.parse("#{params[:feature][:year]}-#{params[:feature][:month]}-#{params[:feature][:day]}")
+    feature.save
+
+    redirect url(:features, :index)
+  end
+
 end
