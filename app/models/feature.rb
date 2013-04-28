@@ -10,4 +10,20 @@ class Feature
   # index :field <, :unique => true>
 
   validates :name, presence: true
+
+  def deadline_year
+    deadline ? deadline.strftime("%Y") : ''
+  end
+
+  def deadline_month
+    deadline ? deadline.strftime("%m").to_i.to_s : ''
+  end
+
+  def deadline_day
+    deadline ? deadline.strftime("%d").to_i.to_s : ''
+  end
+
+  def set_deadline(year, month, day)
+    self.deadline = DateTime.parse("#{year}-#{month}-#{day} 00:00:00+09:00")
+  end
 end
