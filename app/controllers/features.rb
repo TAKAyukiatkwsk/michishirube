@@ -21,7 +21,7 @@ Michishirube::App.controllers :features do
   layout 'apprication.html'
 
   get :index do
-    @features = Feature.all
+    @features = Feature.all.order_by(:created_at.asc)
     render 'features/index'
   end
 
