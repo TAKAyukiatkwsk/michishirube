@@ -1,7 +1,16 @@
 <% @title = '機能' %>
 <h1>機能</h1>
+<%= link_to '新しい機能を作る', url_for(:features, :new) %>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>期限</th>
+  </tr>
 <% @features.each do |feature| %>
-  <%= feature.name %>
-  <%= feature.deadline %>
+  <tr>
+    <td><%= feature.name %></td>
+    <td><%= feature.deadline || 'なし' %></td>
+  </tr>
 <% end %>
+</table>
 
