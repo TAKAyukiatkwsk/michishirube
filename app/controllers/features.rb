@@ -29,9 +29,12 @@ Michishirube::App.controllers :features do
   end
 
   post :create, map: "/features" do
-    feature = Feature.new(name: params[:feature][:name])
-    feature.save
-    redirect url(:features, :index)
+    @feature = Feature.new(name: params[:feature][:name])
+    if @feature.save
+      redirect url(:features, :index)
+    else
+      render 'features/new'
+    end
   end
 
 end
