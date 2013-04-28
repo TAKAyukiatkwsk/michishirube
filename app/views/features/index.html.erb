@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="utf-8">
-  <title>features</title>
-  </head>
-  <body>
-    <h1>機能</h1>
-    <% @features.each do |feature| %>
-      <%= feature.name %>
-      <%= feature.deadline %>
-    <% end %>
-  </body>
-</html>
+<% @title = '機能' %>
+<h1>機能</h1>
+<% @features.each do |feature| %>
+  <%= feature.name %>
+  <%= feature.deadline %>
+<% end %>
 

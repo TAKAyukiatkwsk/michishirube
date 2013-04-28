@@ -18,6 +18,8 @@ Michishirube::App.controllers :features do
   #   'Hello world!'
   # end
   
+  layout 'apprication.html'
+
   get :index do
     @features = Feature.all
     render 'features/index'

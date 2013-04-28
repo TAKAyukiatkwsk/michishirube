@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="utf-8">
-  <title>features</title>
-  </head>
-  <body>
-    <h1>新しい機能</h1>
-    <% form_for @feature, '/features' do |f| %>
-      <%= f.error_messages %>
-      <%= f.text_field_block :name, caption: '名前' %>
-      <%= f.submit_block '作成' %>
-    <% end %>
-  </body>
-</html>
+<% @title = '新しい機能' %>
+<h1>新しい機能</h1>
+<% form_for @feature, '/features' do |f| %>
+  <%= f.error_messages %>
+  <%= f.text_field_block :name, caption: '名前' %>
+  <%= f.submit_block '作成' %>
+<% end %>
 
