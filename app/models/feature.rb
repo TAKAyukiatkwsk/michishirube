@@ -9,6 +9,8 @@ class Feature
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 
+  has_many :tasks
+
   validates :name, presence: true
 
   def deadline_year

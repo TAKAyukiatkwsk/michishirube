@@ -10,3 +10,21 @@
   <%= f.submit_block '修正！' %>
 <% end %>
 
+<h2>タスク</h2>
+<button>作成</button>
+<form method="POST" action="/tasks">
+  <%= csrf_token_field %>
+  <%= hidden_field_tag :feature_id, value: @feature.id %>
+  <div>
+    <label for="task_name">タスク名</label>
+    <input type="text" id="task_name" name="task[name]">
+  </div>
+  <div>
+    <label for="task_point">ポイント</label>
+    <input type="text" id="task_point" name="task[point]">
+  </div>
+  <div>
+    <input type="submit" value="作成！">
+  </div>
+</form>
+
