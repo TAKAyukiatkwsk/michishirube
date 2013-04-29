@@ -40,23 +40,31 @@ Michishirube::App.controllers :features do
   end
 
   get :edit, map: "features/:id" do
-    @feature = Feature.find(params[:id])
-    render 'features/edit'
+    begin
+      @feature = Feature.find(params[:id])
+      render 'features/edit'
+    rescue
+      404
+    end
   end
 
   post :update, map: "features/:id" do
-    feature = Feature.find(params[:id])
-    feature.name = params[:feature][:name]
-    if params[:feature][:no_deadline]
-      feature.deadline = nil
-    else
-      feature.set_deadline(params[:feature][:deadline_year],
-                           params[:feature][:deadline_month],
-                           params[:feature][:deadline_day])
-    end
-    feature.save
+    begin
+      feature = Feature.find(params[:id])
+      feature.name = params[:feature][:name]
+      if params[:feature][:no_deadline]
+        feature.deadline = nil
+      else
+        feature.set_deadline(params[:feature][:deadline_year],
+                             params[:feature][:deadline_month],
+                             params[:feature][:deadline_day])
+      end
+      feature.save
 
-    redirect url(:features, :index)
+      redirect url(:features, :index)
+    rescue
+      404
+    end
   end
 
 end
