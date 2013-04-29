@@ -2,9 +2,9 @@
 <% form_for @feature, "/features/#{@feature.id}" do |f| %>
   <%= f.text_field_block :name, caption: '名前' %>
   <%= f.label :deadline_year, caption: '期限' %>
-  <%= f.select :deadline_year, options: ['2013', '2014'] %>
-  <%= f.select :deadline_month, options: ['1', '2'] %>
-  <%= f.select :deadline_day, options: ['1', '2'] %>
+  <%= f.select :deadline_year, options: year_collection %>
+  <%= f.select :deadline_month, options: month_collection %>
+  <%= f.select :deadline_day, options: day_collection %>
   <%= f.label :no_deadline, caption: '期限なし' %>
   <%= f.check_box :no_deadline %>
   <%= f.submit_block '修正！' %>
