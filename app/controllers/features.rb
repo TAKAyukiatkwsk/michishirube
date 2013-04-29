@@ -47,9 +47,13 @@ Michishirube::App.controllers :features do
   post :update, map: "features/:id" do
     feature = Feature.find(params[:id])
     feature.name = params[:feature][:name]
-    feature.set_deadline(params[:feature][:deadline_year],
-                         params[:feature][:deadline_month],
-                         params[:feature][:deadline_day])
+    if params[:feature][:no_deadline]
+      feature.deadline = nil
+    else
+      feature.set_deadline(params[:feature][:deadline_year],
+                           params[:feature][:deadline_month],
+                           params[:feature][:deadline_day])
+    end
     feature.save
 
     redirect url(:features, :index)

@@ -23,6 +23,10 @@ class Feature
     deadline ? deadline.strftime("%d").to_i.to_s : ''
   end
 
+  def no_deadline
+    deadline.nil?
+  end
+
   def set_deadline(year, month, day)
     self.deadline = DateTime.parse("#{year}-#{month}-#{day} 00:00:00+09:00")
   end

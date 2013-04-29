@@ -5,6 +5,8 @@
   <%= f.select :deadline_year, options: ['2013', '2014'] %>
   <%= f.select :deadline_month, options: ['1', '2'] %>
   <%= f.select :deadline_day, options: ['1', '2'] %>
+  <%= f.label :no_deadline, caption: '期限なし' %>
+  <%= f.check_box :no_deadline %>
   <%= f.submit_block '修正！' %>
 <% end %>
 
