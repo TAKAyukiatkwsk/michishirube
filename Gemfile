@@ -35,3 +35,9 @@ gem 'padrino', '0.11.0'
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.11.0'
 # end
+
+group :development do
+  gem 'guard'
+  gem 'guard-livereload'
+end
+
