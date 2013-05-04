@@ -11,7 +11,6 @@
 <% end %>
 
 <h2>タスク</h2>
-<button>作成</button>
 <form method="POST" action="/tasks">
   <%= csrf_token_field %>
   <%= hidden_field_tag :feature_id, value: @feature.id %>
@@ -27,4 +26,13 @@
     <input type="submit" value="作成！">
   </div>
 </form>
+
+<div id="tasks">
+  <% @feature.tasks.each do |task| %>
+    <div class="task" id="<%= task.id %>">
+      <%= task.name %>
+      <%= task.point %>
+    </div>
+  <% end %>
+</div>
 
