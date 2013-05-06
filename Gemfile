@@ -23,7 +23,10 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 gem 'factory_girl', '~> 4.0', :group => 'test'
 gem 'database_cleaner', :group => 'test'
 
-gem 'pry', :group => ['development', 'test']
+group :development, :test do
+  gem 'pry'
+  gem 'pry-debugger'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.0'
@@ -37,7 +40,7 @@ gem 'padrino', '0.11.0'
 # end
 
 group :development do
-  gem 'guard'
   gem 'guard-livereload'
+  gem 'guard-rspec'
 end
 
