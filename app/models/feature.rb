@@ -17,12 +17,20 @@ class Feature
     deadline ? deadline.strftime("%Y") : ''
   end
 
-  def deadline_month
-    deadline ? deadline.strftime("%m").to_i.to_s : ''
+  def deadline_month(options={})
+    month = deadline ? deadline.strftime("%m") : ''
+    unless options[:padding]
+      month = month.to_i.to_s if month != ''
+    end
+    month
   end
 
-  def deadline_day
-    deadline ? deadline.strftime("%d").to_i.to_s : ''
+  def deadline_day(options={})
+    day = deadline ? deadline.strftime("%d") : ''
+    unless options[:padding]
+      day = day.to_i.to_s if day != ''
+    end
+    day
   end
 
   def no_deadline

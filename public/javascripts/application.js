@@ -11,5 +11,35 @@ $(document).ready(function () {
       $("#feature_deadline_day").removeAttr("disabled");
     }
   }).change();
+
+  $("button#show_feature_form").on("click", function () {
+    $("form#feature").show();
+  });
+
+  $("form#feature").submit(function () {
+    $.ajax({
+      type: 'POST',
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      success: function (data) {
+        alert('success');
+        // update feature data
+        $('h1').text(data.feature.name);
+        var deadline = '';
+        if (data.feature.deadline === null) {
+          deadline = 'なし';
+        } else {
+          deadline = data.feature.deadline_year + '-' +
+                     data.feature.deadline_month + '-' +
+                     data.feature.deadline_day;
+        }
+        $('#deadline').text(deadline);
+      },
+      error: function (data) {
+        alert('修正に失敗しました。');
+      }
+    });
+    return false;
+  });
 });
 

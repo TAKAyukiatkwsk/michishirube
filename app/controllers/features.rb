@@ -48,20 +48,40 @@ Michishirube::App.controllers :features do
     end
   end
 
-  post :update, map: "features/:id" do
+  post :update, map: "features/:id", provides: [:html, :json] do
     begin
       feature = Feature.find(params[:id])
       feature.name = params[:feature][:name]
-      if params[:feature][:no_deadline]
+      if params[:feature][:no_deadline] == '1'
         feature.deadline = nil
       else
         feature.set_deadline(params[:feature][:deadline_year],
                              params[:feature][:deadline_month],
                              params[:feature][:deadline_day])
       end
-      feature.save
 
-      redirect url(:features, :index)
+      if feature.valid?
+        feature.save
+
+        case content_type
+        when :html
+          redirect url(:features, :index)
+        when :json
+          {feature:
+            {name: feature.name,
+             deadline: feature.deadline,
+             deadline_year: feature.deadline_year,
+             deadline_month: feature.deadline_month(padding: true),
+             deadline_day: feature.deadline_day(padding: true)}}.to_json
+        end
+      else
+        case content_type
+        when :html
+          render 'features/edit'
+        when :json
+          [400, feature.errors.messages.to_json]
+        end
+      end
     rescue
       404
     end
