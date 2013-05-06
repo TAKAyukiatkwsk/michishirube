@@ -79,7 +79,7 @@ Michishirube::App.controllers :features do
         when :html
           render 'features/edit'
         when :json
-          [400, feature.errors.messages.to_json]
+          [400, {errors: feature.errors.messages}.to_json]
         end
       end
     rescue

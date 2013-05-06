@@ -1,0 +1,11 @@
+ja:
+  mongoid:
+    models:
+      feature: "機能"
+    attributes:
+      feature:
+        name: "名前"
+    errors:
+      models:
+        feature:
+          blank: "%{attribute}が入力されていません。"

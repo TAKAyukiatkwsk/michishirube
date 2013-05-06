@@ -37,6 +37,8 @@ module Michishirube
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
 
+    set :locale_path, Proc.new { Dir[File.join(Padrino.root, 'config/locales/**/*.{rb,yml}')] }
+
     ##
     # You can configure for a specified environment like:
     #

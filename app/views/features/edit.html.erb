@@ -2,6 +2,7 @@
 <p>期限: <span id="deadline"><%= @feature.deadline ? @feature.deadline.strftime("%Y-%m-%d") : 'なし' %></span></p>
 <button id="show_feature_form">編集</button>
 <% form_for @feature, "/features/#{@feature.id}.json", id: 'feature', style: 'display: none;' do |f| %>
+  <div id="errors" style="color: red;"></div>
   <%= f.text_field_block :name, caption: '名前' %>
   <%= f.label :deadline_year, caption: '期限' %>
   <%= f.select :deadline_year, options: year_collection %>

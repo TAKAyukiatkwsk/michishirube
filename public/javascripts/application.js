@@ -17,6 +17,7 @@ $(document).ready(function () {
   });
 
   $("form#feature").submit(function () {
+    $('div#errors').empty();
     $.ajax({
       type: 'POST',
       url: $(this).attr('action'),
@@ -34,9 +35,15 @@ $(document).ready(function () {
                      data.feature.deadline_day;
         }
         $('#deadline').text(deadline);
+        $("form#feature").hide();
       },
-      error: function (data) {
-        alert('修正に失敗しました。');
+      error: function (xhr, textStatus, errorThrown) {
+        errors = JSON.parse(xhr.responseText);
+        for (var i in errors) {
+          for (var j in errors[i]) {
+            $('div#errors').append('<p>' + errors[i][j] + '</p>');
+          }
+        }
       }
     });
     return false;

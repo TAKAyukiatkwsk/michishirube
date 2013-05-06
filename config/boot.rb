@@ -30,6 +30,8 @@ Bundler.require(:default, PADRINO_ENV)
 #   include Padrino::Helpers::TranslationHelpers
 # end
 
+I18n.default_locale = :ja
+
 ##
 # Add your before (RE)load hooks here
 #
