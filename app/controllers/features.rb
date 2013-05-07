@@ -39,10 +39,10 @@ Michishirube::App.controllers :features do
     end
   end
 
-  get :edit, map: "features/:id" do
+  get :show, map: "features/:id" do
     begin
       @feature = Feature.find(params[:id])
-      render 'features/edit'
+      render 'features/show'
     rescue
       404
     end
@@ -77,7 +77,7 @@ Michishirube::App.controllers :features do
       else
         case content_type
         when :html
-          render 'features/edit'
+          render 'features/show'
         when :json
           [400, {errors: feature.errors.messages}.to_json]
         end

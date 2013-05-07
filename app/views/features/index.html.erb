@@ -11,7 +11,7 @@
   <tr>
     <td><%= feature.name %></td>
     <td><%= feature.deadline ? feature.deadline.strftime("%Y-%m-%d") : 'なし' %></td>
-    <td><%= link_to '編集', url_for(:features, :edit, id: feature.id) %></td>
+    <td><%= link_to '編集', url_for(:features, :show, id: feature.id) %></td>
   </tr>
 <% end %>
 </table>
