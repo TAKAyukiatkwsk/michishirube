@@ -6,7 +6,7 @@ Michishirube::App.controllers :tasks do
       if task.valid?
         feature.tasks << task
       end
-      redirect url(:features, :edit, id: feature.id)
+      redirect url(:features, :show, id: feature.id)
     rescue => e
       404
     end
