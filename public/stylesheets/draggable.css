@@ -1,0 +1,21 @@
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+.task {
+  width: 200px;
+  border: 1px solid black;
+  cursor: move;
+}
+
+.task_status_block {
+  width: 300px;
+  height: 500px;
+  border: 2px solid black;
+  float: left;
+}

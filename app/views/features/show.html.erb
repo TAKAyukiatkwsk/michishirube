@@ -1,3 +1,7 @@
+<% content_for :assets do %>
+  <%= stylesheet_link_tag 'draggable' %>
+  <%= javascript_include_tag 'draggable' %>
+<% end %>
 <h1><%= @feature.name %></h1>
 <p>期限: <span id="deadline"><%= @feature.deadline ? @feature.deadline.strftime("%Y-%m-%d") : 'なし' %></span></p>
 <button id="show_feature_form">編集</button>
@@ -31,11 +35,17 @@
 </form>
 
 <div id="tasks">
-  <% @feature.tasks.each do |task| %>
-    <div class="task" id="<%= task.id %>">
-      <%= task.name %>
-      <%= task.point %>
-    </div>
-  <% end %>
+  <div id="todo" class="task_status_block">
+    <% @feature.tasks.each do |task| %>
+      <div class="task" id="<%= task.id %>" draggable="true">
+        <%= task.name %>
+        <%= task.point %>
+      </div>
+    <% end %>
+  </div>
+  <div id="doing" class="task_status_block">
+  </div>
+  <div id="done" class="task_status_block">
+  </div>
 </div>
 
