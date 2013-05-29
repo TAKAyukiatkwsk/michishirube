@@ -36,6 +36,7 @@
 
 <div id="tasks">
   <div id="todo" class="task_status_block">
+    <h3>todo</h3>
     <% @feature.tasks.each do |task| %>
       <div class="task" id="<%= task.id %>" draggable="true">
         <%= task.name %>
@@ -44,8 +45,10 @@
     <% end %>
   </div>
   <div id="doing" class="task_status_block">
+    <h3>doing</h3>
   </div>
   <div id="done" class="task_status_block">
+    <h3>done</h3>
   </div>
 </div>
 

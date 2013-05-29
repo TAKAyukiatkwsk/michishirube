@@ -8,9 +8,11 @@
 }
 
 .task {
-  width: 200px;
+  width: 290px;
   border: 1px solid black;
   cursor: move;
+  padding: 4px;
+  margin-bottom: 2px;
 }
 
 .task_status_block {
@@ -18,4 +20,7 @@
   height: 500px;
   border: 2px solid black;
   float: left;
+  padding: 15px;
+  margin: 10px;
 }
+
