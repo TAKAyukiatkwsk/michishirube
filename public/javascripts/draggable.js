@@ -2,14 +2,17 @@ $(document).ready(function() {
   var $task = $(".task");
   var $task_status_block = $(".task_status_block");
   var $dragged_task = null;
+  // jQuery で dataTransfer の機能を使う
   $.event.props.push("dataTransfer");
 
-  $task.on("dragstart", function(event) {
+  function dragstartHandler(event) {
     $(this).css("opacity", "0.4");
     $dragged_task = $(this);
     event.dataTransfer.effectAllowed = "move";
     event.dataTransfer.setData("text/html", $(this).html());
-  });
+  }
+
+  $task.on("dragstart", dragstartHandler);
   $task_status_block.on("dragover", function(event) {
     if (event.preventDefault) {
       event.preventDefault();
@@ -27,6 +30,7 @@ $(document).ready(function() {
     var $append_task = $('<div class="task"></div>');
     $append_task.attr({"id": $dragged_task.attr("id"), "draggable": true});
     $append_task.html(event.dataTransfer.getData("text/html"));
+    $append_task.on("dragstart", dragstartHandler);
     $(this).append($append_task);
     return false;
   });
